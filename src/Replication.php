@@ -32,20 +32,33 @@ class Replication
     }
     
     private function restartReplication(){
+        $this->stopReplication();
+        $this->startReplication();
+    }
+    
+    private function stopReplication(){
         $sql = "STOP GROUP_REPLICATION";
         $this->db->execute($sql, null);
+        echo "Stop Replication Group";
+    }
+    
+    private function startReplication(){
         $sql = "START GROUP_REPLICATION";
         $this->db->execute($sql, null);
-        echo "Restart Replication Complete";
+        echo "Start Replication Group";
     }
     
     public function autoChecker()
     {
         $status = $this->checkStatus();
-        if(!empty($status) && $status[0]['member_state'] == "ERROR"){
-            $this->restartReplication();
+        if(!empty($status)){
+            if($status[0]['member_state'] == "ERROR"){
+                $this->restartReplication();
+            }else{
+                $this->startReplication();
+            }
         }else{
-            echo "nothing to start";
+            echo "Nothing To Start";
         }
     }
 }
