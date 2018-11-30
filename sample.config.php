@@ -8,7 +8,7 @@
 
 $configuration = array();
 $configuration['database']['host'] = "mysql_host";
-$configuration['database']['name'] = "database_name";
+$configuration['database']['name'] = "performance_schema";
 $configuration['database']['user'] = "user_db";
 $configuration['database']['password'] = "password_db";
 

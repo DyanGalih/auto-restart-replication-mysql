@@ -42,7 +42,7 @@ class Replication
     public function autoChecker()
     {
         $status = $this->checkStatus();
-        if(!empty($status) && $status[0]->member_state == "ERROR"){
+        if(!empty($status) && $status[0]['member_state'] == "ERROR"){
             $this->restartReplication();
         }else{
             echo "nothing to start";
