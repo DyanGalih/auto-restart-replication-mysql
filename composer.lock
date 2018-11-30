@@ -1,0 +1,55 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "cfd98763ebf5e741035b37ad2cb44c95",
+    "packages": [
+        {
+            "name": "webappid/simplepdo",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DyanGalih/simple-pdo-connection.git",
+                "reference": "e1ac3ada72ae0cfc4b4a173f851b0fa7be82d212"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DyanGalih/simple-pdo-connection/zipball/e1ac3ada72ae0cfc4b4a173f851b0fa7be82d212",
+                "reference": "e1ac3ada72ae0cfc4b4a173f851b0fa7be82d212",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WebAppId\\SimplePDO\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "mit"
+            ],
+            "authors": [
+                {
+                    "name": "Dyan Galih",
+                    "email": "dyan.galih@gmail.com"
+                }
+            ],
+            "description": "Simple class connection using PDO for mysql database",
+            "time": "2018-11-30T10:25:06+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
