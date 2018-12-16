@@ -26,23 +26,26 @@ class Replication
         $sql = "SELECT member_state FROM replication_group_members WHERE  member_host = :member_host";
         
         $obj = new \StdClass();
-        $obj->member_host = $this->config["src"]["ip"];
+        $obj->member_host = gethostbyname(gethostname());;
         
         return $this->db->open($sql, $obj);
     }
     
-    private function restartReplication(){
+    private function restartReplication()
+    {
         $this->stopReplication();
         $this->startReplication();
     }
     
-    private function stopReplication(){
+    private function stopReplication()
+    {
         $sql = "STOP GROUP_REPLICATION";
         $this->db->execute($sql, null);
         echo "Stop Replication Group";
     }
     
-    private function startReplication(){
+    private function startReplication()
+    {
         $sql = "START GROUP_REPLICATION";
         $this->db->execute($sql, null);
         echo "Start Replication Group";
@@ -51,13 +54,19 @@ class Replication
     public function autoChecker()
     {
         $status = $this->checkStatus();
-        if(!empty($status)){
-            if($status[0]['member_state'] == "ERROR"){
-                $this->restartReplication();
-            }else{
-                $this->startReplication();
+        if (!empty($status)) {
+            switch ($status[0]['member_state']) {
+                case "ERROR" :
+                    $this->restartReplication();
+                    break;
+                case "OFFLINE" :
+                    $this->startReplication();
+                    break;
+                default:
+                    $this->startReplication();
+                    break;
             }
-        }else{
+        } else {
             echo "Nothing To Start";
         }
     }
