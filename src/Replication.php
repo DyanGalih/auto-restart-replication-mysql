@@ -26,7 +26,7 @@ class Replication
         $sql = "SELECT member_state FROM replication_group_members WHERE  member_host = :member_host";
         
         $obj = new \StdClass();
-        $obj->member_host = gethostbyname(gethostname());;
+        $obj->member_host = gethostbyname(gethostname());
         
         return $this->db->open($sql, $obj);
     }
