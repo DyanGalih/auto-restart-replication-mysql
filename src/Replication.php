@@ -63,7 +63,7 @@ class Replication
                     $this->startReplication();
                     break;
                 default:
-                    $this->startReplication();
+                    echo "Nothing To Start";
                     break;
             }
         } else {

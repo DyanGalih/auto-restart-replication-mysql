@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "webappid/simplepdo",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DyanGalih/simple-pdo-connection.git",
-                "reference": "e1ac3ada72ae0cfc4b4a173f851b0fa7be82d212"
+                "reference": "e3943ce23ed690aeaf26bf62a54ff9573e29aed1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DyanGalih/simple-pdo-connection/zipball/e1ac3ada72ae0cfc4b4a173f851b0fa7be82d212",
-                "reference": "e1ac3ada72ae0cfc4b4a173f851b0fa7be82d212",
+                "url": "https://api.github.com/repos/DyanGalih/simple-pdo-connection/zipball/e3943ce23ed690aeaf26bf62a54ff9573e29aed1",
+                "reference": "e3943ce23ed690aeaf26bf62a54ff9573e29aed1",
                 "shasum": ""
             },
             "require": {
@@ -41,7 +41,7 @@
                 }
             ],
             "description": "Simple class connection using PDO for mysql database",
-            "time": "2018-11-30T10:25:06+00:00"
+            "time": "2018-11-30T12:19:33+00:00"
         }
     ],
     "packages-dev": [],
