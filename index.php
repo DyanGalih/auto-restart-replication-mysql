@@ -1,9 +1,5 @@
 <?php
 
-session_id(gethostname());
-
-session_start();
-$_SESSION['SERVER_STATUS'] = 'normal';
 /**
  * Created by PhpStorm.
  * User: dyangalih
@@ -15,8 +11,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 require_once __DIR__ . '/config.php';
 
-
 use Replication\Replication;
+
 
 $replication = new Replication($configuration);
 

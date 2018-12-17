@@ -53,24 +53,25 @@ class Replication
     
     public function autoChecker()
     {
+        $serverStatus = new ServerStatus();
         $status = $this->checkStatus();
         if (!empty($status)) {
             switch ($status[0]['member_state']) {
                 case "ERROR" :
-                    if ($_SESSION['SERVER_STATUS'] != 'error') {
-                        $_SESSION['SERVER_STATUS'] = 'error';
+                    if($serverStatus->getData()!='error') {
+                        $serverStatus->setData('error');
                         SimpleTelegram::sentMessage($this->config['telegram']['token'], $this->config['telegram']['chat_id'], 'Error');
                     }
                     break;
                 case "OFFLINE" :
-                    if ($_SESSION['SERVER_STATUS'] != 'offline') {
-                        $_SESSION['SERVER_STATUS'] = 'offline';
+                    if($serverStatus->getData()!='offline') {
+                        $serverStatus->setData('offline');
                         SimpleTelegram::sentMessage($this->config['telegram']['token'], $this->config['telegram']['chat_id'], 'Offline');
                     }
                     break;
                 default:
-                    if ($_SESSION['SERVER_STATUS'] != 'normal') {
-                        $_SESSION['SERVER_STATUS'] = 'normal';
+                    if($serverStatus->getData()!='normal') {
+                        $serverStatus->setData('normal');
                         SimpleTelegram::sentMessage($this->config['telegram']['token'], $this->config['telegram']['chat_id'], 'Back to Normal');
                     }
                     break;
