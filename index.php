@@ -1,4 +1,7 @@
 <?php
+
+session_id(gethostname());
+
 session_start();
 $_SESSION['SERVER_STATUS'] = 'normal';
 /**
