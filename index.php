@@ -1,4 +1,6 @@
 <?php
+session_start();
+$_SESSION['SERVER_STATUS'] = 'normal';
 /**
  * Created by PhpStorm.
  * User: dyangalih

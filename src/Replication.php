@@ -57,13 +57,22 @@ class Replication
         if (!empty($status)) {
             switch ($status[0]['member_state']) {
                 case "ERROR" :
-                    SimpleTelegram::sentMessage($this->config['token'], $this->config['chat_id'], 'Error');
+                    if ($_SESSION['SERVER_STATUS'] != 'error') {
+                        $_SESSION['SERVER_STATUS'] = 'error';
+                        SimpleTelegram::sentMessage($this->config['token'], $this->config['chat_id'], 'Error');
+                    }
                     break;
                 case "OFFLINE" :
-                    SimpleTelegram::sentMessage($this->config['token'], $this->config['chat_id'], 'Offline');
+                    if ($_SESSION['SERVER_STATUS'] != 'offline') {
+                        $_SESSION['SERVER_STATUS'] = 'offline';
+                        SimpleTelegram::sentMessage($this->config['token'], $this->config['chat_id'], 'Offline');
+                    }
                     break;
                 default:
-                    echo "Nothing To Start";
+                    if ($_SESSION['SERVER_STATUS'] != 'normal') {
+                        $_SESSION['SERVER_STATUS'] = 'normal';
+                        SimpleTelegram::sentMessage($this->config['token'], $this->config['chat_id'], 'Back to Normal');
+                    }
                     break;
             }
         } else {
