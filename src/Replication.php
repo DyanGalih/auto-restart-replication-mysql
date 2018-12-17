@@ -57,10 +57,10 @@ class Replication
         if (!empty($status)) {
             switch ($status[0]['member_state']) {
                 case "ERROR" :
-                    $this->restartReplication();
+                    SimpleTelegram::sentMessage($this->config['token'], $this->config['chat_id'], 'Error');
                     break;
                 case "OFFLINE" :
-                    $this->startReplication();
+                    SimpleTelegram::sentMessage($this->config['token'], $this->config['chat_id'], 'Offline');
                     break;
                 default:
                     echo "Nothing To Start";
