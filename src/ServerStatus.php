@@ -11,16 +11,22 @@ namespace Replication;
 
 class ServerStatus
 {
+    private $fileName;
+    
+    public function __construct()
+    {
+        $this->fileName = 'server_status.log';
+    }
     
     public function getData(){
-        $myFile = fopen("server_status.log", "r") or die("Unable to open file!");
+        $myFile = fopen($this->fileName, "r") or die("Unable to open file!");
         $serverStatus = fgets($myFile);
         fclose($myFile);
         return $serverStatus;
     }
     
     public function setData($status){
-        $myFile = fopen("server_status.log", "w") or die("Unable to open file!");
+        $myFile = fopen($this->fileName, "w") or die("Unable to open file!");
         fwrite($myFile, $status);
         fclose($myFile);
     }

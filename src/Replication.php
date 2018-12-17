@@ -23,12 +23,9 @@ class Replication
     
     private function checkStatus()
     {
-        $sql = "SELECT member_state FROM replication_group_members WHERE  member_host = :member_host";
+        $sql = "SELECT member_state FROM replication_group_members LIMIT 1";
         
-        $obj = new \StdClass();
-        $obj->member_host = gethostbyname(gethostname());
-        
-        return $this->db->open($sql, $obj);
+        return $this->db->open($sql);
     }
     
     private function restartReplication()
@@ -61,12 +58,14 @@ class Replication
                     if($serverStatus->getData()!='error') {
                         $serverStatus->setData('error');
                         SimpleTelegram::sentMessage($this->config['telegram']['token'], $this->config['telegram']['chat_id'], 'Error');
+                        $this->restartReplication();
                     }
                     break;
                 case "OFFLINE" :
                     if($serverStatus->getData()!='offline') {
                         $serverStatus->setData('offline');
                         SimpleTelegram::sentMessage($this->config['telegram']['token'], $this->config['telegram']['chat_id'], 'Offline');
+                        $this->startReplication();
                     }
                     break;
                 default:
