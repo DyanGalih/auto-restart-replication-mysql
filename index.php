@@ -16,4 +16,7 @@ use Replication\Replication;
 
 $replication = new Replication($configuration);
 
-$replication->autoChecker();
+while(true) {
+    $replication->autoChecker();
+    sleep(1);
+}
